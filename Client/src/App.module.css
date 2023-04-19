@@ -1,0 +1,9 @@
+.nav{
+   text-align: center;
+   background-color: #b9babb;;
+   padding: 50px  20px;
+   flex-direction: row;
+   justify-content: end;
+   margin-bottom: 2em;
+   
+}

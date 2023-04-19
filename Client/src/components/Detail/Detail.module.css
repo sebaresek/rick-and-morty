@@ -1,0 +1,97 @@
+.container{
+    padding: 1rem;
+    margin-top: 4rem;
+    border-radius: 4rem;
+    box-shadow: 0 0 .2rem #912e3b, 0 0 .2rem #912e3b, 0 0 2rem #912e3b;
+
+    display: flex;
+    align-items: center;
+    color: #000000;
+    top: 0%;
+    right: 0%;
+}
+
+.detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.detail div{
+    width: fit-content;
+    margin-top: 1rem;
+    padding-right: 8rem;
+}
+
+.container div h1{
+    margin-top: -70px;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: black;
+    text-shadow: 0 0 0.2rem #912e3b, 0 0 0.1rem #912e3b , 0 0 1rem #912e3b;
+}
+
+.container div label{
+    width: fit-content;
+    font-size: 1.9rem;
+    color: black;
+    text-shadow: 0 0 0.2rem #912e3b, 0 0 0.1rem #912e3b, 0 0 1rem #912e3b;
+    border-radius: 0.3rem;
+    font-family: 'Rubik Glitch', cursive;
+}
+
+.container div p{
+    width: fit-content;
+    color: rgb(0, 0, 0);
+    font-family: 'Rubik Glitch', cursive;
+    font-size: 30px;
+    margin-left: 22rem;
+    margin-bottom: 1rem;
+}
+
+.containerImg{
+    display: flex;
+    justify-content: center;
+}
+.container div img{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 9999rem;
+    overflow: hidden;
+    transition: .8s;
+}
+.container div img:hover{
+    transform: scale(1.05);
+    color: white;
+    background-color: #912e3b;
+    box-shadow: 0 0 1rem #912e3b, 0 0 4rem #912e3b, 0 0 8rem #912e3b;
+}
+
+.link{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.container div button{
+    font-family: 'Rubik Glitch', cursive;
+    font-size: 20px;
+    margin-left: -108rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+    width: 6rem;
+    height:3rem;
+    background: linear-gradient(#912e3b, #912e3b);
+    border: transparent;
+
+    overflow: hidden;
+    transition: 300ms;
+}
+.container div button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: rgb(0, 0, 0);
+    background-color: #912e3b;
+    box-shadow: 0 0 1rem #912e3b, 0 0 4rem #912e3b, 0 0 8rem #912e3b;
+}

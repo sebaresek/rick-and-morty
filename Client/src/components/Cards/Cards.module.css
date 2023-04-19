@@ -1,0 +1,13 @@
+.container{
+    justify-content: space-around;
+    padding: 1.7rem;
+    border-radius: 1rem;
+    gap: 1rem;
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    
+    grid-column-gap: 1rem;
+    grid-row-gap: 4rem;
+    justify-items: center;
+}
