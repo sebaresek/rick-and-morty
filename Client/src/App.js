@@ -64,11 +64,10 @@ function App() {
 
    return (
       <div className='App'>
-         {location.pathname !== '/' && <Nav onSearch={onSearch} />}
+         {location.pathname === '/' ? <Form login={login}/> : <Nav onSearch={onSearch} setAccess={setAccess}/>}
 
 
          <Routes>
-            <Route path='/' element={<Form login={login}/>} />
             <Route path='/home' element={ <Cards characters={characters} onClose={onClose}/> }/>
             <Route path='/about' element={<About/>} />
             <Route path='/detail/:id' element={<Detail/>} />
