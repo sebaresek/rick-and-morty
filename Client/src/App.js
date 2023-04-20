@@ -37,27 +37,24 @@ function App() {
 
    const onSearch = (id) => {
       // Verifica si el personaje ya fue buscado
-      const alreadySearched = characters.some((character) => character.id === id);
-      if (alreadySearched) {
-        alert("Ya has buscado este personaje 👻");
-        return;
-      }
       // Realiza la búsqueda del personaje por ID
       axios
-        .get(`${URL_BASE}/${id}`)
-        .then(({ data }) => {
-          if (data.error) {
+      .get(`${URL_BASE}/${id}`)
+      .then(({ data }) => {
+         const exist = characters.find((character) => character.id === data.id);
+         if (data.error) {
             alert("No se encontró un personaje con ese ID 🙁");
             return;
-          }
-    
-          // Actualiza el estado con el nuevo personaje encontrado
-          setCharacters((oldChars) => [...oldChars, data]);
-        })
-        .catch((error) => {
-          console.error(error);
-          alert("Hubo un error al buscar el personaje 😞");
-        });
+         }if (exist) {
+            alert("Ya has buscado este personaje 😅");
+            return;
+         } // Actualiza el estado con el nuevo personaje encontrado
+         setCharacters((oldChars) => [...oldChars, data]);
+      })
+      .catch((error) => {
+         console.error(error);
+         alert("Hubo un error al buscar el personaje 😞");
+      });
    };
     
 
