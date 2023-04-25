@@ -1,8 +1,8 @@
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from "./action-types";
+import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types";
 
 const initialState = {
     myFavorites: [],
-    allFavorites: []
+    allCharactersFav: []
 }
 
 
@@ -11,36 +11,36 @@ const reducer = (state = initialState, { type, payload }) => {
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: [...state.allFavorites, payload],
-                allFavorites: [...state.allFavorites, payload]
+                myFavorites: payload,
+                allCharactersFav: payload
             }
 
         case REMOVE_FAV: 
             return {
                 ...state,
-                myFavorites: state.myFavorites.filter(fav => fav.id !== payload)
+                myFavorites: payload,
+                allCharactersFav: payload
             }
 
-            case FILTER :
-                const allCharacteresFiltered = state.allFavorites.filter(character => character.gender === payload)
-                return {
-                    ...state,
-                    myFavorites:
+        case FILTER:
+            const allCharactersFiltered = state.allCharactersFav.filter(character => character.gender === payload)
+            return {
+                ...state,
+                myFavorites: 
                     payload === 'allCharacters'
-                    ? [...state.allFavorites]
-                    : allCharacteresFiltered
-                }
-    
-    
-            case ORDER:
-                const allFavoritesCopy = [...state.allFavorites]
-                return{
-                        ...state,
-                        myFavorites: 
-                            payload === 'A'
-                            ? allFavoritesCopy.sort((a,b) => a.id - b.id)
-                            : allFavoritesCopy.sort((a,b) => b.id - a.id)
-                }
+                    ? [...state.allCharactersFav]
+                    : allCharactersFiltered
+            }
+
+        case ORDER:
+            const allCharactersFavCopy = [...state.allCharactersFav]
+            return {
+                ...state,
+                myFavorites:
+                    payload === 'A'
+                    ? allCharactersFavCopy.sort((a, b) => a.id - b.id)
+                    : allCharactersFavCopy.sort((a, b) => b.id - a.id)
+            }
 
         default:
             return {...state}

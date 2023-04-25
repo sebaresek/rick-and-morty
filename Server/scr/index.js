@@ -1,26 +1,28 @@
-const http = require('http');
-const data = require('./utils/data'); // Importa el archivo utils.js
+const express = require('express');
+const server = express();
+const router = require('./routes/index');
+const morgan = require('morgan');
+const PORT = 3001;
 
-const server = http.createServer((req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  
-  if (req.url.includes('/rickandmorty/character/')) { // Verifica si la URL incluye "/rickandmorty/character/"
-    const id = req.url.split('/').pop(); // Obtiene el ID del personaje del final de la URL
-    
-    const character = data.find((character) => character.id === +id); // Busca al personaje con el ID correspondiente
-    
-    if (character) { // Si se encuentra al personaje, envía una respuesta con un objeto JSON que lo contenga
-      res.writeHead(200, {'Content-Type': 'application/json'});
-      res.end(JSON.stringify(character));
-    } else { // Si no se encuentra al personaje, envía una respuesta de error 404
-      res.statusCode = 404;
-      res.end('Personaje no encontrado');
-    }
-  } else {
-    res.end('Ruta no encontrada!');
-  }
+server.use(express.json());
+server.use(morgan('dev'));
+
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header(
+       'Access-Control-Allow-Headers',
+       'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    res.header(
+       'Access-Control-Allow-Methods',
+       'GET, POST, OPTIONS, PUT, DELETE'
+    );
+    next();
 });
+    
+server.use('/rickandmorty', router);
 
-server.listen(3001, 'localhost',() => {
-  console.log('Server listening on port 3001');
+server.listen(PORT, () => {
+    console.log(`Server raised in port: ${PORT}`);
 });
