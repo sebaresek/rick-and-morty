@@ -11,12 +11,13 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 // import fondo from './assets/img/fondo1.jpg'
 
 
-const URL_BASE = 'http://localhost:3001/rickandmorty/character';
+// const URL_BASE = 'http://localhost:3001/rickandmorty/character';
 // const API_KEY = '04dc260ec2a9.6bb0446d158e45c86b33';
 // ?key=${API_KEY}
 
-const email = 'seba@gmail.com';
-const password = '123asd';
+// const email = 'seba@gmail.com';
+// const password = '123asd';
+const URL = 'http://localhost:3001/rickandmorty/login';
 
 function App() {
    const location = useLocation();
@@ -24,41 +25,35 @@ function App() {
    const [characters, setCharacters] = useState([]);
    const [access, setAccess] = useState(false);
 
-   const login = (userData) => {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login';
-      axios(URL + `?email=${email}&password=${password}`)
-      .then(({ data }) => {
+   const login = async (userData) => {
+      try {
+         const { email, password } = userData;
+         const { data } = await axios(URL + `?email=${email}&password=${password}`)
          const { access } = data;
+
          setAccess(access);
          access && navigate('/home');
-      });
+
+      } catch (error) {
+         console.log(error.message);
+      }
    }
 
    useEffect(() => {
       !access && navigate('/')
-   }, [access]);
+   }, [access, navigate])
 
-   const onSearch = (id) => {
-      // Verifica si el personaje ya fue buscado
-      // Realiza la búsqueda del personaje por ID
-      axios
-      .get(`${URL_BASE}/${id}`)
-      .then(({ data }) => {
-         const exist = characters.find((character) => character.id === data.id);
-         if (data.error) {
-            alert("No se encontró un personaje con ese ID 🙁");
-            return;
-         }if (exist) {
-            alert("Ya has buscado este personaje 😅");
-            return;
-         } // Actualiza el estado con el nuevo personaje encontrado
-         setCharacters((oldChars) => [...oldChars, data]);
-      })
-      .catch((error) => {
-         console.error(error);
-         alert("Hubo un error al buscar el personaje 😞");
-      });
+   const onSearch = async (id) => {
+      try {
+         const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+         
+         if(data.name) {
+            setCharacters((oldChars) => [...oldChars, data]);
+         };
+
+      } catch (error) {
+         alert('¡No hay personajes con este ID!');
+      }
    };
     
 
