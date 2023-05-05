@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 
 
-export default function Card({ id, name, species, gender, image, onClose }) {
+export default function Card({ id, name, species, gender, image, onClose, status }) {
 
    const audioRef = useRef(null);
    function handleMouseEnter() {
@@ -24,7 +24,7 @@ export default function Card({ id, name, species, gender, image, onClose }) {
       }
       else {
          setIsFav(true);
-         dispatch(addFav({ id, name, species, gender, image, onClose, }))
+         dispatch(addFav({ id, name, species, status, gender, image, origin }))
       }
    }
 
