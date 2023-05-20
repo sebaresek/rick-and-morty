@@ -35,6 +35,7 @@ En Henry te capacitan para que con todo lo que sabes hasta el momento es suficie
 🔹 Gracias por haber visitado mi Repositorio! Espero que te haya sido de gran utilidad.
 
 Mi nombre es Sebastian Resek y espero poder ayudarte en otra ocacion 👋 
+
 Por cualquier duda o consulta contactame! 
 
 <br />
