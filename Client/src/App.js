@@ -17,7 +17,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
 // const email = 'seba@gmail.com';
 // const password = '123asd';
-const URL = 'https://rick-and-morty-production-a4ce.up.railway.app/login';
+const URL = 'https://rick-and-morty-production-a4ce.up.railway.app/rickandmorty/login';
 
 function App() {
    const location = useLocation();
