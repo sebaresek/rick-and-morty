@@ -2,7 +2,7 @@ import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './action-types';
 import axios from 'axios';
 
 export const addFav = (character) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/favorite';
+    const endpoint = 'https://rick-and-morty-production-a4ce.up.railway.app/rickandmorty/favorite';
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, character);
@@ -20,7 +20,7 @@ export const addFav = (character) => {
 };
 
 export const removeFav = (id) => {
-    const endpoint = `http://localhost:3001/rickandmorty/favorite/${id}`;
+    const endpoint = `https://rick-and-morty-production-a4ce.up.railway.app/rickandmorty/favorite/${id}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.delete(endpoint);

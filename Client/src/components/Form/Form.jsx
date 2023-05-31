@@ -29,7 +29,7 @@ const Form = ({ login }) => {
     event.preventDefault();
     if (isRegistering) { // Si se está registrando, usa axios.post
       axios
-        .post("http://localhost:3001/rickandmorty/login/register", {
+        .post("https://rick-and-morty-production-a4ce.up.railway.app/rickandmorty/login/register", {
           password: userData.password,
           email: userData.email,
           id: 1,
