@@ -36,6 +36,8 @@ const Form = ({ login }) => {
         })
         .then(({ data }) => {
           console.log(data);
+          alert("Registro exitoso. Por favor, inicie sesión.");
+          window.location.href = "/";
           // Podrías redirigir al usuario a la página de inicio de sesión aquí
         });
     } else { // Si no, usa axios.get
